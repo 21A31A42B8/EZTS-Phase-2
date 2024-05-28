@@ -1,0 +1,139 @@
+##Anagram##
+s = input()
+t = input()
+s1 = list(set(s))
+t1 = list(set(t))
+if len(s1) != len(t1):
+    print(False)
+if sorted(s1) != sorted(t1):
+    print(False)
+for i in s1:
+    if s.count(i) != t.count(i):
+        print(False)
+        
+else:
+    print(True)
+##Anagramplus##
+s = input()
+t = input()
+d ={}
+if len(s) != len(t):
+    print(False)
+if len(set(s)) != len(set(t)):
+    print(False)
+for i in range(len(s)):
+    if s[i] not in d:
+        d[s[i]] = t[i]
+    else:
+        if t[i] != d[s[i]]:
+            print(False)
+else:
+    print(True)
+##colour of chessboard##
+coordinates = input()
+c = coordinates
+k = {"a":1,"b":2,"c":3,"d":4,"e":5,"f":6,"g":7,"h":8}
+p,q = int(k[c[0]]),int(c[1])
+if p%2 != 0 and q%2 != 0:
+    print(False)
+if p%2 == 0 and q%2 != 0:
+    print(True)
+if p%2 != 0 and q%2 == 0:
+    print(True)
+if p%2 == 0 and q%2 == 0:
+    print(False)
+## Evalution postfix notation using stack ##
+n = input()
+k = []
+for i in n:
+    if i.isdigit():
+        k.append(int(i))
+    else:
+        if i == "+":
+            c = k[-1]+k[-2]
+            k.pop()
+            k.pop()
+            k.append(c)
+        if i == "-":
+            c = k[-1] - k[-2]
+            k.pop()
+            k.pop()
+            k.append(c)
+        if i == "*":
+            c = k[-1]*k[-2]
+            k.pop()
+            k.pop()
+            k.append(c)
+        if i == "/":
+            c = k[-1]//k[-2]
+            k.pop()
+            k.pop()
+            k.append(c)
+print(*k)
+## lastone ##
+s = [1,2,3,4,5,6,7,8,9,10,11,12]
+n = 3
+f = 0
+while len(s) >1:
+    if f==0:
+        for i in range(n):
+            if len(s) >1:
+                s.pop(0)
+            else:
+                break
+        f = 1
+    else:
+        for i in range(n):
+            if len(s) >1:
+                s.pop()
+            else:
+                break
+        f = 0
+print(s)
+## Parenthsis##
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        
+        for char in s:
+            if char in "({[":
+                stack.append(char)
+            elif char == ')':
+                if not stack or stack[-1] != '(':
+                    return False
+                stack.pop()
+            elif char == ']':
+                if not stack or stack[-1] != '[':
+                    return False
+                stack.pop()
+            elif char == '}':
+                if not stack or stack[-1] != '{':
+                    return False
+                stack.pop()
+        
+        return not stack
+k = Solution()
+print(k.isValid("()"))
+## queue using stack ##
+lass MyQueue:
+
+    def __init__(self):
+        self.k = []
+
+    def push(self, x: int) -> None:
+        self.x = x
+        self.k.append(self.x)
+
+    def pop(self) -> int:
+        return self.k.pop(0)
+
+    def peek(self) -> int:
+        return self.k[0]
+
+    def empty(self) -> bool:
+        if len(self.k) == 0:
+            return True
+        else:
+            return False   
+
+
